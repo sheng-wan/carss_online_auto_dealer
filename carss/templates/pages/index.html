@@ -1,0 +1,199 @@
+<!-- jinja expression -->
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block title %} | Welcome {% endblock %}
+
+{% block content %}
+<!-- Showcase -->
+<section id="showcase">
+  <div class="container text-center">
+    <div class="home-search p-5">
+      <div class="overlay p-5">
+        <h1 class="display-4 mb-4">
+          Car Searching Just Got So Easy
+        </h1>
+        <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae quas, asperiores eveniet
+          vel nostrum magnam
+          voluptatum tempore! Consectetur, id commodi!</p>
+        <div class="search">
+          <form action="{% url 'search' %}">
+            <!-- Form Row 1 -->
+            <div class="form-row">
+
+              <div class="col-md-4 mb-3">
+                <select name="condition" class="form-control" id="type">
+                  <option selected="true" value="">New & Used Cars</option>
+                  <option value="New">New Cars</option>
+                  <option value="Used">Used Cars</option>
+                </select>
+              </div>
+
+              <div class="col-md-4 mb-3">
+                <select name="make" class="form-control" id="type">
+                  <option selected="true" value="">All Makes</option>
+                  {% for make in makes %}
+                  <option value="{{ make }}">{{ make }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+
+              <div class="col-md-4 mb-3">
+                <select name="price" class="form-control" id="type">
+                  <option selected="true" value="">Max Price (Any)</option>
+                  <option value="10000">$10,000</option>
+                  <option value="15000">$15,000</option>
+                  <option value="20000">$20,000</option>
+                  <option value="25000">$25,000</option>
+                  <option value="30000">$30,000</option>
+                  <option value="35000">$35,000</option>
+                  <option value="40000">$40,000</option>
+                  <option value="50000">$50,000</option>
+                  <option value="70000">$70,000</option>
+                  <option value="100000">$100,000</option>
+                </select>
+              </div>
+
+            </div>
+
+            <!-- Form Row 2 -->
+            <div class="form-row">
+
+              <div class="col-md-4 mb-3">
+                <select name="body_style" class="form-control" id="type">
+                  <option selected="true" value="">All Body Styles</option>
+                  {% for body in bodies %}
+                  <option value="{{ body }}">{{ body }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+
+              <div class="col-md-4 mb-3">
+                <select name="fuel" class="form-control" id="type">
+                  <option selected="true" value="">All Fuel Types</option>
+                  {% for fuel in fuels %}
+                  <option value="{{ fuel }}">{{ fuel }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+
+              <div class="col-md-4 mb-3">
+                <select name="transmission" class="form-control" id="type">
+                  <option selected="true" value="">All Transmissions</option>
+                  {% for transmission in transmissions %}
+                  <option value="{{ transmission }}">{{ transmission }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+
+            </div>
+            <button class="btn btn-secondary btn-block mt-4" type="submit">Submit form</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Listings -->
+<section id="listings" class="py-5">
+  <div class="container">
+    <h3 class="text-center mb-3">Latest Listings</h3>
+    <div class="row">
+      {% if listings %}
+
+      {% for listing in listings %}
+
+      <!-- Listing 1 -->
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card listing-preview">
+          <img class="card-img-top" src="{{ listing.photo_main.url }}" alt="">
+          <div class="card-img-overlay">
+            <h2>
+              <span class="badge badge-secondary text-white">${{ listing.price | intcomma}}</span>
+            </h2>
+          </div>
+          <div class="card-body">
+            <div class="listing-heading text-center">
+              <h4 class="text-primary">
+                {{ listing.year }} {{ listing.make }} {{ listing.model }}
+              </h4>
+              <p>
+                <i class="fas fa-car text-secondary"></i>
+                {% if listing.condition == 'New' %}
+                {{listing.condition}}
+                {%else %}
+                {{ listing.condition}} - Mileage: {{listing.mileage}}
+                {%endif %}
+              </p>
+            </div>
+            <hr />
+            <div class="row py-2 text-secondary">
+              <div class="col-6">
+                <i class="fas fa-spray-can"></i> Color: {{ listing.color }}
+              </div>
+              <div class="col-6">
+                <i class="fas fa-gas-pump"></i> Power: {{ listing.fuel }}
+              </div>
+            </div>
+            <div class="row py-2 text-secondary">
+              <div class="col-6">
+                <i class="fas fa-car-side"></i>
+                {{ listing.drivetrain }}
+              </div>
+              <div class="col-6">
+                <i class="fas fa-cog"></i>
+                {{ listing.transmission }}
+              </div>
+            </div>
+            <hr />
+            <a href="{% url 'listing' listing.id %}" class="btn btn-primary btn-block">More Info</a>
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+
+      {% else %}
+
+      <div class="col-md-12">
+        <p> No Listings Available </p>
+      </div>
+
+      {% endif %}
+
+    </div>
+  </div>
+</section>
+
+<section id="services" class="py-5 bg-secondary text-white">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-4">
+        <i class="fas fa-comment fa-4x mr-4"></i>
+        <hr>
+        <h3>Know Your Needs</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, debitis nam! Repudiandae, provident iste
+          consequatur
+          hic dignissimos ratione ea quae.</p>
+      </div>
+      <div class="col-md-4">
+        <i class="fas fa-car fa-4x mr-4"></i>
+        <hr>
+        <h3>Help You Find It</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, debitis nam! Repudiandae, provident iste
+          consequatur
+          hic dignissimos ratione ea quae.</p>
+      </div>
+      <div class="col-md-4">
+        <i class="fas fa-paste fa-4x mr-4"></i>
+        <hr>
+        <h3>Handle All Paperworks</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, debitis nam! Repudiandae, provident iste
+          consequatur
+          hic dignissimos ratione ea quae.</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
