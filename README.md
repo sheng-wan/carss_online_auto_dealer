@@ -4,7 +4,11 @@ A Python | Django Project
 
 Live at: http://18.144.133.255/
 
+<<<<<<< HEAD
 ![Home Screenshot](./screenshots/01_Home.png)
+=======
+![alt text](image.jpg)
+>>>>>>> d1d86614099c6915ff0803dcd19d3d3b49048ade
 
 ### SUMMARY
 
@@ -12,12 +16,20 @@ Carss is an online auto dealer website where users can search and browse car lis
 
 The project is written in Python 3.7 and Django 3.0, including six apps - accounts, advisors, carss, contacts, listings, and pages; three models with 1 one-to-many relationship.
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> d1d86614099c6915ff0803dcd19d3d3b49048ade
 ### TECHNOLOGIES
 
 - Front-End Technologies: HTML 5 | CSS 3 | JavaScript | jQuery | Bootstrap | Lightbox
 - Back-End: Python 3.7 | Django 3.0 | Pillow
 - Database: PostgreSQL
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> d1d86614099c6915ff0803dcd19d3d3b49048ade
 ### FEATURES
 
 1. The website uses Bootstrap themes and is **fully responsive**, with dynamic page titles and breadcrumb on different pages. Customized logo and favicon.
@@ -26,7 +38,11 @@ The project is written in Python 3.7 and Django 3.0, including six apps - accoun
 
 3. The About Page features a seller of the month section, the selected advisor can be changed on the Advisor’s “is_mvp (an advisor attribute)” in the Admin Area.
 
+<<<<<<< HEAD
 4. The Search Form queries the listing database and renders results based on the search query. The Search Results Page preserves the **search query** on the search form.
+=======
+4. The Search Form queries the listing database and renders results based on the search query. The Search Results Page preserves the **search query** on the search form. 
+>>>>>>> d1d86614099c6915ff0803dcd19d3d3b49048ade
 
 5. All Listings Page renders all “published (a listing attribute)” listings, ordered by “list_date (a listing attribute)”. Implemented page pagination on the page using Django **Paginator** Package
 
