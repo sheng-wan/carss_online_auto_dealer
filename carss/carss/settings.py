@@ -151,8 +151,8 @@ MESSAGE_TAGS = {
 }
 
 
-# Local_Settings for production
-try:
-    from .local_settings import *
-except ImportError:
-    pass
+# # Local_Settings for production
+# try:
+#     from .local_settings import *
+# except ImportError:
+#     pass
