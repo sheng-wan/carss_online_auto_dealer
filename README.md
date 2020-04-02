@@ -6,8 +6,6 @@ Live at: http://18.144.133.255/
 
 
 ![Home Screenshot](./screenshots/01_Home.png)
-=======
-![alt text](image.jpg)
 
 ### SUMMARY
 
